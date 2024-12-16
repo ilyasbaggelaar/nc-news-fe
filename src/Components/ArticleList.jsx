@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getArticlesData } from "../../app";
-import {ArticleCard} from "./ArticleCard"
+import  ArticleCard  from "./ArticleCard"
 
 
 function ArticleList() {
@@ -10,16 +10,19 @@ function ArticleList() {
     useEffect(() => {
     getArticlesData()
     .then((data) => {
-        setArticlesData(data)
+        setArticlesData(data.articles)
     })
     }, [])
 
 
 
     return (
-        <div>
-            <p>Hello</p>
-            <ArticleCard/>
+        <div className="article-list">
+            <ul className="article-list">
+            {articles.map((article, index) => (
+                <ArticleCard key={index} article={article} />
+            ))}
+            </ul>
         </div>
     )
 

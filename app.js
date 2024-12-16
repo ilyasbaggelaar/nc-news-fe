@@ -5,3 +5,9 @@ export const getArticlesData = () => {
         return data
     })
 }
+
+export const getTopicsData = () => {
+    return axios.get('https://nc-news-f67l.onrender.com/api/topics').then(({data}) => {
+        return data
+    })
+}
