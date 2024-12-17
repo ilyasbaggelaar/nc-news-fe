@@ -3,6 +3,7 @@ import { getArticlesData } from "../../app";
 import  ArticleCard  from "./ArticleCard"
 
 
+
 function ArticleList() {
 
     const [articles, setArticlesData] = useState([])
@@ -20,7 +21,7 @@ function ArticleList() {
         <div className="article-list">
             <ul className="article-list">
             {articles.map((article, index) => (
-                <ArticleCard key={index} article={article} />
+            <ArticleCard key={index} article={article} />
             ))}
             </ul>
         </div>
