@@ -7,6 +7,7 @@ import Home from './pages/Home.jsx'
 import Topics from './pages/Topics.jsx'
 import Header from './Components/Header.jsx'
 import Footer from './Components/Footer.jsx'
+import Article from './pages/Article.jsx'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/topics" element={<Topics/>}/>
+          <Route path="/articles/:article_id" element={<Article/>}/>
         </Routes>
       </main>
       <Footer/>
