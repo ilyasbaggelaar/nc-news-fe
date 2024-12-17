@@ -36,6 +36,7 @@ function Article() {
 
 
     return (
+        <section>
         <div className="Article">
         <h1>{article.title}</h1>
         <img src={article.article_img_url} />
@@ -44,8 +45,14 @@ function Article() {
         <p>{article.body}</p>
         <br></br>
         <p>topic: {article.topic}</p>
-
         </div>
+{/* 
+        Set-up for next task/sprint
+        <div className="Comments">
+        </div> */}
+
+        </section>
+        
     )
 }
 
