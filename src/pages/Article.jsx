@@ -11,8 +11,6 @@ function Article() {
     const [article, setArticle] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    console.log(article)
-
     useEffect(() => {
         getSpecficArticleData(article_id)
         .then((data) => {

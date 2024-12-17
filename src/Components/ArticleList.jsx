@@ -7,13 +7,23 @@ import  ArticleCard  from "./ArticleCard"
 function ArticleList() {
 
     const [articles, setArticlesData] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
     getArticlesData()
     .then((data) => {
         setArticlesData(data.articles)
+        setLoading(false)
+    })
+    .catch((err) => {
+        console.error("Error loading the articles: ", err);
+        setLoading(false);
     })
     }, [])
+
+    if(loading) {
+        return <p>loading...</p>
+    }
 
 
 
