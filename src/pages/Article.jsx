@@ -42,7 +42,10 @@ function Article() {
     setVotes((prevVotes) => prevVotes + increment);
     setVotesError(null);
 
-    patchArticleVotes(article_id, increment).then((err) => {
+    patchArticleVotes(article_id, increment).then(() => {
+        setVotesError("")
+    })
+    .catch((err) => {
       console.error("error updating the votes", err);
       setVotes((prevVotes) => prevVotes - increment);
       setVotesError("Vote failed, try again");
