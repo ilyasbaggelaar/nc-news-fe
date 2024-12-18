@@ -17,3 +17,10 @@ export const getTopicsData = () => {
         return data
     })
 }
+
+export const getCommentsData = (article_id) => {
+    return axios.get(`https://nc-news-f67l.onrender.com/api/articles/${article_id}/comments`).then(({data}) => {
+        return data
+    })
+
+}

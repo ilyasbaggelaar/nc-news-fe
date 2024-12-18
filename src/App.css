@@ -18,7 +18,7 @@ header {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 15px;
-  width: 200%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -26,6 +26,7 @@ header {
 header nav {
   display: flex;
   gap: 15px;
+  width: 100%;
   padding-left: 0px;
 }
 
@@ -95,10 +96,80 @@ header a:hover{
   font-size: 0.9rem;
 }
 
+.comment-list {
+  display: flex;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.comment {
+  padding: 15px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid black;
+  border-width: 2px;
+  border-style: dotted;
+  background-color: #f5f5f5;
+}
+
+.Article{
+  padding: 10px;
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  object-position: 10px;
+  display: flex;
+  flex-direction: column;
+  border-width: 2px;
+  background-color: #f5f5f5;
+}
+
+.Article img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin: 0 auto;
+  object-position: 10px;
+  object-fit: cover;
+}
+
+.Article-Title {
+  margin-left: 10px;
+}
+
+.Article-Date {
+  margin-left: 10px;
+}
+
+.Article-Body {
+  margin-left: 10px;
+}
+
+.Article-Topic {
+  margin-left: 10px;
+}
+
 footer {
   text-align: center;
   padding: 15px 0;
   background-color: #333;
   color: #fff;
   margin-top: 20px;
+}
+
+@media (min-width: 640px) {
+  header button,
+  header input {
+    font-size: 1.2em;
+  }
+
+  .
+
+  p {
+    font-size: 1em;
+  }
 }
