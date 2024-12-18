@@ -161,6 +161,39 @@ footer {
   margin-top: 20px;
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 1,
+  'opsz' 20
+}
+
+.material-symbols-outlined:hover {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 1,
+  'opsz' 20
+}
+
+
+.vote-button:hover {
+  color: #000
+}
+
+.vote-button.upvote {
+  color: green;
+}
+
+.vote-button.downvote {
+  color: red;
+}
+
+.votes-amount {
+  margin-left: 10px;
+}
+
 @media (min-width: 640px) {
   header button,
   header input {
@@ -171,3 +204,6 @@ footer {
     font-size: 1em;
   }
 }
+
+
+
