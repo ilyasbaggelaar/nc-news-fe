@@ -6,7 +6,7 @@ function Comments({comment}) {
         <div className="comment">
         <h3>{comment['author']}</h3>
         <p>{comment['body']}</p>
-        <p>{comment['votes']} 👍</p>
+        <p>{comment['votes'] >= 0 ? `${comment['votes']} 👍` : `${comment['votes']} 👎`}</p>
         <br></br>
         </div>
        </li>

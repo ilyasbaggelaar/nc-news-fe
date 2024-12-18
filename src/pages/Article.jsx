@@ -50,32 +50,40 @@ function Article() {
         return<p>Article not found.</p>
     }
 
-    if(commentsLoading) {
-        return <p></p>
-    }
-    if(!comments){
-        return <p>Comments not found</p>
-    }
+    // if(commentsLoading) {
+    //     return <p></p>
+    // }
+    // if(!comments){
+    //     return <p>Comments not found</p>
+    // }
 
 
     return (
         <section>
         <div className="Article">
-        <h1>{article.title}</h1>
+        <h1 className="Article-Title">{article.title}</h1>
         <img src={article.article_img_url} />
-        <p>{new Date(article.created_at).toLocaleString()}</p>
+        <p className="Article-Date">{new Date(article.created_at).toLocaleString()}</p>
         <br></br>
-        <p>{article.body}</p>
+        <p className="Article-Body">{article.body}</p>
         <br></br>
-        <p>topic: {article.topic}</p>
+        <p className="Article-Topic">topic: {article.topic}</p>
         </div>
 
         <div className="comments">
-            <ul className="comments-list">
-            {comments.map((comment, index) => (
-            <AllComments key={index} comment={comment}/>
-            ))}
-            </ul>
+            <h2 className="Comments-Header">Comments</h2>
+            {commentsLoading ? (
+                <p>Comments Loading...</p>
+            ) : comments && comments.length > 0 ? (
+                <ul className="comments-list">
+                {comments.map((comment, index) => (
+                <AllComments key={index} comment={comment}/>
+                ))}
+                </ul>
+            ) : (
+                <p>Comments not found.</p>
+            )}
+
         </div>
 
         </section>
