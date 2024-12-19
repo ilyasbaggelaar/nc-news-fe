@@ -32,3 +32,10 @@ export const patchArticleVotes = (article_id, increment) => {
         return data;
     });
 }
+
+export const postCommentOnArticle = (article_id, newComment) => {
+    return axios.post(`https://nc-news-f67l.onrender.com/api/articles/${article_id}/comments`, newComment)
+    .then(({data}) => {
+        return data
+    })
+}
