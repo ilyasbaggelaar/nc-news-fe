@@ -24,3 +24,11 @@ export const getCommentsData = (article_id) => {
     })
 
 }
+
+export const patchArticleVotes = (article_id, increment) => {
+    return axios
+    .patch(`https://nc-news-f67l.onrender.com/api/articles/${article_id}`, { votes: increment })
+    .then(({ data }) => {
+        return data;
+    });
+}
