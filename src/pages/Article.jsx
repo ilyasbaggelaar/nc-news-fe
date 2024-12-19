@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getArticlesData, getCommentsData, patchArticleVotes } from "../../api";
+import { getArticlesData, getCommentsData, patchArticleVotes, postCommentOnArticle } from "../../api";
 import { getSpecficArticleData } from "../../api";
 import AllComments from "../Components/Comments";
 
@@ -8,8 +8,10 @@ function Article() {
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [commentsErrorMessage, setCommentsErrorMessage] = useState("")
   const [commentsLoading, setCommentsLoading] = useState(true);
   const [comments, setComments] = useState(null);
+  const [comment, setComment] = useState(null);
   const [votes, setVotes] = useState(0);
   const [voteError, setVotesError] = useState(null);
 
@@ -51,6 +53,28 @@ function Article() {
       setVotesError("Vote failed, try again");
     });
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(comment)
+    console.log(article_id)
+
+    const newComment = {
+      body: comment,
+      username: "jessjelly",
+    }
+
+    postCommentOnArticle(article_id, newComment)
+    .then((response) => {
+      setComment("")
+      setCommentsErrorMessage("")
+      setComments((prevComments) => [response.comment, ...prevComments])
+    })
+    .catch((err) => {
+      setCommentsErrorMessage("Error placing comment!")
+    })
+    
+  }
 
   if (loading) {
     return <p>loading...</p>;
@@ -100,7 +124,24 @@ function Article() {
 
       {voteError && <p style={{ color: "red" }}>{voteError}</p>}
 
+
+      <form onSubmit={handleSubmit}>
+          <label htmlFor="submit-comment"> Add a comment... </label>
+          <br />
+          <textarea
+          type="text"
+          id="submit-comment"
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          required
+          />
+          <input type="submit" value="submit" />
+
+
+      </form>
+
       <div className="comments">
+      <br />
         <h2 className="Comments-Header">Comments</h2>
         {commentsLoading ? (
           <p>Comments Loading...</p>
