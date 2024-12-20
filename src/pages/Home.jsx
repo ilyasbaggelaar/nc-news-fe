@@ -4,7 +4,7 @@ function Home() {
 
     return (
         <>
-        <h1>Welcome to NC-News</h1>
+        <h1 className="welcome">Welcome to NC-News</h1>
         <ArticleList/>
         </>
     );
