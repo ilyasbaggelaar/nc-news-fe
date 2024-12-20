@@ -1,11 +1,17 @@
 import axios from "axios";
 
-export const getArticlesData = (topic) => {
-  const url = topic
-    ? `https://nc-news-f67l.onrender.com/api/articles?topic=${topic}`
-    : `https://nc-news-f67l.onrender.com/api/articles`;
+export const getArticlesData = (topic, sort_by = "created_at", order = "desc") => {
+  //   const url = topic
+  //     ? `https://nc-news-f67l.onrender.com/api/articles?topic=${topic}`
+  //     : `https://nc-news-f67l.onrender.com/api/articles`;
 
-  return axios.get(url).then(({ data }) => {
+  const url = new URL(`https://nc-news-f67l.onrender.com/api/articles`);
+
+  if (topic) url.searchParams.append("topic", topic);
+  url.searchParams.append("sort_by", sort_by);
+  url.searchParams.append("order", order);
+
+  return axios.get(url.toString()).then(({ data }) => {
     return data;
   });
 };
