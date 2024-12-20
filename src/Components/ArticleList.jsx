@@ -4,13 +4,13 @@ import  ArticleCard  from "./ArticleCard"
 
 
 
-function ArticleList() {
+function ArticleList({topic}) {
 
     const [articles, setArticlesData] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-    getArticlesData()
+    getArticlesData(topic)
     .then((data) => {
         setArticlesData(data.articles)
         setLoading(false)
@@ -19,7 +19,7 @@ function ArticleList() {
         console.error("Error loading the articles: ", err);
         setLoading(false);
     })
-    }, [])
+    }, [topic])
 
     if(loading) {
         return <p>loading...</p>
