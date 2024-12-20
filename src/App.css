@@ -55,6 +55,37 @@ header a:hover{
   text-decoration: underline;
 }
 
+form input[type="submit"] {
+padding: 8px 16px;
+font-size: 1em;
+width: auto;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+form input:hover {
+  background-color: #cecece;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+  margin-left: 25px;
+}
+
+form textarea{
+  width: 100;
+  max-width: 600px;
+  height: 80px;
+  resize: none;
+  padding: 8px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 .article-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -107,13 +138,16 @@ header a:hover{
 .comment {
   padding: 15px;
   width: 90%;
-  display: flex;
   flex-direction: column;
   gap: 5px;
   border: 1px solid black;
   border-width: 2px;
   border-style: dotted;
   background-color: #f5f5f5;
+}
+
+.Comments-Header{
+  margin-left: 20px;
 }
 
 .Article{
@@ -153,6 +187,8 @@ header a:hover{
   margin-left: 10px;
 }
 
+
+
 footer {
   text-align: center;
   padding: 15px 0;
@@ -176,6 +212,65 @@ footer {
   'GRAD' 1,
   'opsz' 20
 }
+
+.delete-button{
+  left: 15px;
+  display: flex;
+  size: 115%;
+}
+
+.comment button {
+  margin-top: 15px;
+  width: auto;
+  padding: 8px 12px;
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.comment-list {
+  list-style: none;
+  margin-top: -20px;
+  padding: 20px;
+  gap: 1px;
+}
+
+.comment {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+}
+
+.comment h3 {
+  font-size: 1.2em;
+  margin: 0;
+  color: #333;
+}
+
+.comment p {
+  font-size: 1em;
+  color: #555;
+  margin-top: 10px;
+}
+
+.comment p:last-child {
+  margin-bottom: 0;
+}
+
+.comment button:hover {
+  background-color: #c0392b;
+}
+
+.comment button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
 
 
 .vote-button:hover {

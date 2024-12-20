@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getArticlesData, getCommentsData, patchArticleVotes, postCommentOnArticle } from "../../api";
+import { deleteCommentOnArticle, getArticlesData, getCommentsData, patchArticleVotes, postCommentOnArticle } from "../../api";
 import { getSpecficArticleData } from "../../api";
 import AllComments from "../Components/Comments";
 
@@ -12,6 +12,9 @@ function Article() {
   const [commentsLoading, setCommentsLoading] = useState(true);
   const [comments, setComments] = useState(null);
   const [comment, setComment] = useState(null);
+  // const [deleteComment, setDeleteComment] = useState(null);
+
+  const [deleting, isDeleting] = useState(false);
   const [votes, setVotes] = useState(0);
   const [voteError, setVotesError] = useState(null);
 
@@ -54,10 +57,25 @@ function Article() {
     });
   };
 
+  const handleDelete = (commentId) => {
+
+    setComments((prevComments) => 
+      prevComments.map((comment) => 
+        comment.comment_id === commentId
+        ? {...comment, isDeleting: true} : comment
+      )
+    )
+    deleteCommentOnArticle(commentId)
+    .then(() => {
+      setComments((prevComments) => 
+        prevComments.filter((comment) => comment.comment_id !== commentId)
+      )
+    })
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(comment)
-    console.log(article_id)
+
 
     const newComment = {
       body: comment,
@@ -148,7 +166,7 @@ function Article() {
         ) : comments && comments.length > 0 ? (
           <ul className="comments-list">
             {comments.map((comment, index) => (
-              <AllComments key={index} comment={comment} />
+              <AllComments key={index} comment={comment} handleDelete={handleDelete}/>
             ))}
           </ul>
         ) : (
